@@ -5,9 +5,12 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 To start server :
 
-	`json-server --watch db.json`
+	json-server --watch db.json
 
 JSON file served from http://localhost:3000
 
-Npm install and npm start 
+Start App: 
+
+	npm install 
+	npm start 
 
