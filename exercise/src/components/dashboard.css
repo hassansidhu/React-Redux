@@ -1,0 +1,19 @@
+.Dashboard-Container {
+    padding-top: 10px;
+}
+.Dashboard-Card {
+    width: 200px;
+    background-color: #6A939D;
+    color: white;
+    margin: 10px;
+    float: left;
+}
+
+.Dashboard-Card-Body {
+    cursor: pointer;
+}
+
+.Details-Container {
+    padding-top: 20px;
+    clear: left;
+}
