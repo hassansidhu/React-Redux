@@ -1,9 +1,43 @@
 import React, {Component} from 'react';
 import './details.css';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
-export default class Details extends Component {
+
+import PieChart from 'react-simple-pie-chart';
+
+
+
+const styles = theme => ({
+    root: theme.mixins.gutters({
+        paddingTop: 16,
+        paddingBottom: 16,
+        marginTop: theme.spacing.unit * 3,
+        marginLeft: 10,
+        width:200,
+        backgroundColor:'#80DEEA',
+        color:'white',
+
+    }),
+    tabBase: {
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto',
+        width: 500,
+        paddingRight: 16,
+    },
+    tabHead: {
+        fontSize: 16,
+    },
+});
+
+class DetailsBase extends Component {
 
     render() {
+        const { classes } = this.props;
+
         let details = this.props.tests;
         let failed =  details.filter((test) => "FAILED" === test.status);
         let inprogress = details.filter((test) => "INPROGRESS" === test.status);
@@ -11,35 +45,58 @@ export default class Details extends Component {
 
         return (
             <div >
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                          <th>FeedID</th>
-                          <th>Status</th>
-                        </tr>
-                    </thead>
-                    {
-                        details.map((test,index) =>
-                            <tbody key={index}>
-                                <tr >
-                                  <td>{test.feedId}</td>
-                                  <td>{test.status}</td>
-                                </tr>
-                            </tbody>
-                        )
-                    }
-                </table>
-                <div className="card Details-Card">
-                    <div className="card-header Details-Card-Header">
+            <Paper className={classes.tabBase}>
+                  <Table>
+                    <TableHead className={classes.tabHead}>
+                      <TableRow>
+                        <TableCell>FeedID</TableCell>
+                        <TableCell>Status</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {
+                          details.map((test,index) =>
+                              <TableRow key={index}>
+                                <TableCell>{test.feedId}</TableCell>
+                                <TableCell>{test.status}</TableCell>
+                              </TableRow>
+                          )
+                      }
+                    </TableBody>
+                  </Table>
+                </Paper>
+                <Paper className={classes.root} elevation={4}>
+                    <Typography type="headline" component="h4">
                         OverAll Status
+                    </Typography>
+                    <Divider/>
+                    <Typography type="subheading" component="span" >
+                        Total: {details.length}
+                    </Typography>
+                    <Typography type="subheading" component="span" color="secondary">
+                        In Progress: {inprogress.length}
+                    </Typography>
+                    <Typography type="subheading" component="span" color="accent" >
+                        Failed: {failed.length}
+                    </Typography>
+                    <div className="piechart">
+                        <PieChart
+                            slices={[
+                                {
+                                  color: '#66BB6A',
+                                  value: inprogress.length,
+                                },
+                                {
+                                  color: '#EF5350',
+                                  value:  failed.length,
+                                },
+                            ]}
+                        />
                     </div>
-                    <div className="card-body ">
-                        <span className="text">Total: {details.length}</span>
-                        <span className="text inprogress">In Progress:{inprogress.length}</span>
-                        <span className="text failed">Failed:{failed.length}</span>
-                    </div>
-                </div>
+                </Paper>
+
             </div>
         );
     }
 }
+export const Details = withStyles(styles)(DetailsBase);

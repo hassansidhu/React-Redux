@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { itemsFetchData } from '../actions/items';
 import './dashboard.css';
-import Details from './details';
+import {Details} from './details';
+
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -27,6 +28,7 @@ class Dashboard extends Component {
     }
 
     render() {
+        const { classes } = this.props;
 
         let unique = [ ...new Set(this.props.items.map(item => item.appId))];
         let tests = this.props.items.filter((items) => this.state.currentApp === items.appId);
@@ -40,21 +42,24 @@ class Dashboard extends Component {
         }
 
         return (
-            <div className="Dashboard-Container">
-                {
-                    unique.map((item, index) => (
-                        <div className="card Dashboard-Card" key={index}>
-                            <div className="card-body Dashboard-Card-Body" onClick={()=>this.showDetails(item)}>
-                                {item}
+            <div>
+                <div className="Dashboard-Container">
+                    {
+                        unique.map((item, index) => (
+                            <div className="card Dashboard-Card" key={index}>
+                                <div className="card-body Dashboard-Card-Body" onClick={()=>this.showDetails(item)}>
+                                    {item}
+                                </div>
                             </div>
-                        </div>
 
-                ))
-                }
+                        ))
+                    }
+                    </div>
                 <div className="Details-Container">
                     <Details tests={tests} />
                 </div>
             </div>
+
         );
     }
 }

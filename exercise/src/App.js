@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/dashboard';
 
 
-class App extends Component {
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+  }
+});
+
+class AppBase extends Component {
+
   render() {
+        const { classes } = this.props;
+
     return (
-      <div className="container-fluid">
-            <nav className="nav  justify-content-center App-Header">
-                <a className="nav-link active App-Heading" href="#">Dashboard</a>
-            </nav>
+        <div className="container-fluid">
+            <div className={classes.root}>
+                <AppBar position="static" color="primary">
+                  <Toolbar>
+                    <Typography type="title" color="inherit">
+                      App Dashboard
+                    </Typography>
+                  </Toolbar>
+                </AppBar>
+            </div>
             <div >
                 <Dashboard/>
             </div>
-    </div>
+        </div>
     );
   }
 }
 
-export default App;
+
+export const App = withStyles(styles)(AppBase);

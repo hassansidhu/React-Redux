@@ -3,10 +3,15 @@
 }
 .Dashboard-Card {
     width: 200px;
-    background-color: #6A939D;
+    height: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #26C6DA;
     color: white;
     margin: 10px;
     float: left;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #9E9E9E;
 }
 
 .Dashboard-Card-Body {
@@ -16,4 +21,5 @@
 .Details-Container {
     padding-top: 20px;
     clear: left;
+    padding-left: 20px;
 }
