@@ -9,5 +9,7 @@ To start server :
 
 JSON file served from http://localhost:3000
 
-	npm install
-	npm start
+Start App: 
+
+	npm install 
+	npm start 
