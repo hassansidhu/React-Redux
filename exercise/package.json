@@ -5,6 +5,7 @@
   "dependencies": {
     "ag-grid-react": "^13.2.0",
     "bootstrap": "^4.0.0-beta",
+    "highcharts": "^5.0.14",
     "material-ui": "^1.0.0-beta.12",
     "mdbreact": "^4.0.0-alpha",
     "react": "^15.6.2",
@@ -12,6 +13,7 @@
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.13",
     "react-simple-pie-chart": "^0.4.1",
+    "recharts": "^1.0.0-apha.5",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.3"
