@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
-import {PieChart, Pie} from 'recharts';
+import {PieChart, Pie, Legend} from 'recharts';
 
 
 const styles = theme => ({
@@ -44,7 +44,7 @@ class DetailsBase extends Component {
         let details = this.props.tests;
         let failed =  details.filter((test) => "FAILED" === test.status);
         let inprogress = details.filter((test) => "INPROGRESS" === test.status);
-        let data =  [{name:'FAILED', value:failed.length}, {name:'IN-PROGRESS', value: inprogress.length}];
+        let data =  [{name:'FAILED', value:failed.length, fill: '#ff7300'}, {name:'IN-PROGRESS', value: inprogress.length}];
 
 
         return (
@@ -76,7 +76,17 @@ class DetailsBase extends Component {
                 </Paper>
                 <div className={classes.detailsContiner}>
                     <PieChart width={455} height={300}>
-                        <Pie startAngle={0} endAngle={360} data={data} cx={200} cy={200} outerRadius={80} fill="#82ca9d" label/>
+                    <Legend  />
+                        <Pie startAngle={0}
+                            endAngle={360}
+                            data={data}
+                            dataKey="value"
+                            cx={200}
+                            cy={150}
+                            outerRadius={80}
+                            fill="#82ca9d"
+                            label
+                            legendType="line"/>
                     </PieChart>
                     <div className={classes.root} elevation={4}>
                         <Typography type="headline" component="h4">

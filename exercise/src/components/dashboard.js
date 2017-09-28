@@ -28,7 +28,6 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { classes } = this.props;
 
         let unique = [ ...new Set(this.props.items.map(item => item.appId))];
         let tests = this.props.items.filter((items) => this.state.currentApp === items.appId);
