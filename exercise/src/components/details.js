@@ -25,8 +25,8 @@ const styles = theme => ({
     tabBase: {
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto',
-        width: 500,
         paddingRight: 16,
+        marginRight: 16,
     },
     tabHead: {
         fontSize: 16,
@@ -51,6 +51,8 @@ class DetailsBase extends Component {
                       <TableRow>
                         <TableCell>FeedID</TableCell>
                         <TableCell>Status</TableCell>
+                        <TableCell>Vendor</TableCell>
+                        <TableCell>Last Update</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -59,6 +61,8 @@ class DetailsBase extends Component {
                               <TableRow key={index}>
                                 <TableCell>{test.feedId}</TableCell>
                                 <TableCell>{test.status}</TableCell>
+                                <TableCell>{test.vendor}</TableCell>
+                                <TableCell>{test.lastModifed}</TableCell>
                               </TableRow>
                           )
                       }
