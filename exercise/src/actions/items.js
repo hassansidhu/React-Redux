@@ -1,3 +1,10 @@
+/*Action Creators are the functions that are dispatched to emit a change
+    – all they do is return an action.
+
+    When an action is dispatched, a Reducer is the function that actually changes the state appropriate to that action –
+        or returns the existing state if the action is not applicable to that reducer.*/
+
+
 export function itemsHasErrored(bool) {
     return {
         type: 'ITEMS_HAS_ERRORED',

@@ -6,3 +6,7 @@ export default combineReducers({
     itemsHasErrored,
     itemsIsLoading
 });
+
+
+/*Individual reducers are combined
+    into a single rootReducer to create the discrete properties of the state.*/

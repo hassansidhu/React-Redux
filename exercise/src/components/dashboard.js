@@ -79,3 +79,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+    /** connect is what allows us to connect a component to Redux's store,
+        and itemsFetchData is the action creator we wrote earlier.
+        We only need to import this one action creator,
+        as it handles dispatching the other actions.
+        **/

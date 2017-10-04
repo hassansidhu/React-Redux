@@ -10,7 +10,12 @@ import configureStore from './store/configureStore';
 
 const store = configureStore();
 
+
 render(<Provider store ={store}>
         <App />
     </Provider>, document.getElementById('root'));
 registerServiceWorker();
+
+/*For using Redux in React,
+    the <Provider /> component wraps the entire application
+    and passes the store down to all children. */
